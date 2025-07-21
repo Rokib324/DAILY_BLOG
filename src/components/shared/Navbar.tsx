@@ -1,6 +1,7 @@
 'use client'
+
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import {
     NavigationMenu,
     NavigationMenuContent,
@@ -13,14 +14,15 @@ import {
   } from "@/components/ui/navigation-menu"
   import { Button } from "@/components/ui/button"
   import { Switch } from "@/components/ui/switch"
-  import { AiOutlineMenu } from "react-icons/ai";
-  import { usePathname } from 'next/navigation';
 
+  import { usePathname } from 'next/navigation';
+  import MobileMenu from './MobileMenu';
 
 
 
 
 const Navbar = () => {
+    
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
 
@@ -64,12 +66,8 @@ const Navbar = () => {
                 <Button variant="default">Login</Button>
             </div>
             
-            {/* mobile menu */}
-            <div className='lg:hidden'>
-                <Button>
-                    <AiOutlineMenu size={24}/>
-                </Button>
-            </div>
+           {/* MobileMneu */}
+           <MobileMenu />
             
         </nav>
     </header>
