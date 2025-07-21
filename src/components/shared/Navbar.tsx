@@ -1,3 +1,4 @@
+'use client'
 import Link from 'next/link'
 import React from 'react'
 import {
@@ -11,6 +12,11 @@ import {
     NavigationMenuViewport,
   } from "@/components/ui/navigation-menu"
   import { Button } from "@/components/ui/button"
+  import { Switch } from "@/components/ui/switch"
+  import { AiOutlineMenu } from "react-icons/ai";
+
+
+
 
 
 const Navbar = () => {
@@ -22,31 +28,45 @@ const Navbar = () => {
                 <Link href="/">Daily Blogs</Link>
             </div>
             {/* desktop menu */}
-            <NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-        <NavigationMenuLink href='/news' className='text-gray-700 hover:text-gray-600'>News</NavigationMenuLink>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-        <NavigationMenuTrigger className='text-gray-700 hover:text-gray-600'>Services</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink href='/services/ios' className='text-gray-700 hover:text-gray-600'>IOS</NavigationMenuLink>
-        <NavigationMenuLink href='/services/web' className='text-gray-700 hover:text-gray-600'>Web Development</NavigationMenuLink>
-        <NavigationMenuLink href='/services/app' className='text-gray-700 hover:text-gray-600'>App Development</NavigationMenuLink>
-        <NavigationMenuLink href='/services/ai' className='text-gray-700 hover:text-gray-600'>AI Development</NavigationMenuLink>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-        <NavigationMenuLink href='/about' className='text-gray-700 hover:text-gray-600'>About</NavigationMenuLink>
-    </NavigationMenuItem>
-    <NavigationMenuItem>
-        <NavigationMenuLink href='/contact' className='text-gray-700 hover:text-gray-600'>Contact</NavigationMenuLink>
-    </NavigationMenuItem>
-  </NavigationMenuList>
-</NavigationMenu>
-            {/* toggle menu and login button */}
-            <Button variant="outline" className='bg-black text-white hover:bg-gray-800 hover:text-white'>Login</Button>
+            <NavigationMenu className='hidden lg:flex'>
+                <NavigationMenuList>
+                    <NavigationMenuItem className='flex items-center space-x-8'>
+                        <NavigationMenuLink href='/news' className='text-gray-700 hover:text-gray-600'>News</NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuTrigger className='text-gray-700 hover:text-gray-600'>Services</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                        <NavigationMenuLink href='/services/ios' className='text-gray-700 hover:text-gray-600'>IOS</NavigationMenuLink>
+                        <NavigationMenuLink href='/services/web' className='text-gray-700 hover:text-gray-600'>Web Development</NavigationMenuLink>
+                        <NavigationMenuLink href='/services/app' className='text-gray-700 hover:text-gray-600'>App Development</NavigationMenuLink>
+                        <NavigationMenuLink href='/services/ai' className='text-gray-700 hover:text-gray-600'>AI Development</NavigationMenuLink>
+                    </NavigationMenuContent>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink href='/about' className='text-gray-700 hover:text-gray-600'>About</NavigationMenuLink>
+                    </NavigationMenuItem>
+                    <NavigationMenuItem>
+                        <NavigationMenuLink href='/contact' className='text-gray-700 hover:text-gray-600'>Contact</NavigationMenuLink>
+                    </NavigationMenuItem>
+                </NavigationMenuList>
+            </NavigationMenu>
 
+            {/* toggle menu and login button */}
+            <div className='hidden lg:flex items-center space-x-4'>
+                <div className='flex items-center space-x-2'>
+                    <span className='mr-2'>Dark Mode</span>
+                    <Switch />
+                </div>
+                <Button variant="default">Login</Button>
+            </div>
+            
+            {/* mobile menu */}
+            <div className='lg:hidden'>
+                <Button>
+                    <AiOutlineMenu size={24}/>
+                </Button>
+            </div>
+            
         </nav>
     </header>
   )
