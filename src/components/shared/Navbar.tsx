@@ -14,12 +14,16 @@ import {
   import { Button } from "@/components/ui/button"
   import { Switch } from "@/components/ui/switch"
   import { AiOutlineMenu } from "react-icons/ai";
+  import { usePathname } from 'next/navigation';
 
 
 
 
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const isActive = (path: string) => pathname === path;
+
   return (
     <header className='py-4 shadow-md'>
         <nav className=' flex justify-between items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -31,7 +35,7 @@ const Navbar = () => {
             <NavigationMenu className='hidden lg:flex'>
                 <NavigationMenuList>
                     <NavigationMenuItem className='flex items-center space-x-8'>
-                        <NavigationMenuLink href='/news' className='text-gray-700 hover:text-gray-600'>News</NavigationMenuLink>
+                        <NavigationMenuLink href='/news' className={`text-gray-700 hover:text-gray-600 ${isActive('/news') ? 'text-blue-500' : ''}`}>News</NavigationMenuLink>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
                         <NavigationMenuTrigger className='text-gray-700 hover:text-gray-600'>Services</NavigationMenuTrigger>
@@ -43,10 +47,10 @@ const Navbar = () => {
                     </NavigationMenuContent>
                     </NavigationMenuItem>
                     <NavigationMenuItem>
-                        <NavigationMenuLink href='/about' className='text-gray-700 hover:text-gray-600'>About</NavigationMenuLink>
-                    </NavigationMenuItem>
+                    <NavigationMenuLink href='/about' className={`text-gray-700 hover:text-gray-600 ${isActive('/about') ? 'text-blue-500' : ''}`}>About</NavigationMenuLink> 
+                    </NavigationMenuItem>   
                     <NavigationMenuItem>
-                        <NavigationMenuLink href='/contact' className='text-gray-700 hover:text-gray-600'>Contact</NavigationMenuLink>
+                        <NavigationMenuLink href='/contact' className={`text-gray-700 hover:text-gray-600 ${isActive('/contact') ? 'text-blue-500' : ''}`}>Contact</NavigationMenuLink> 
                     </NavigationMenuItem>
                 </NavigationMenuList>
             </NavigationMenu>
